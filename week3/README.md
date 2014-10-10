@@ -40,10 +40,6 @@ public class A {
         System.out.println("Hello World!");
         B b = new B();
     }
-
-    /*
-    * Needed: to explain the order of class initialization
-    * */
 }
 
 public class B extends A {
