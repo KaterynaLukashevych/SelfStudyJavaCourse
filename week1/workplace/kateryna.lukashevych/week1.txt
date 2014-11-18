@@ -1,0 +1,49 @@
+1. As you probably know, there was the first true object-oriented language named Smalltalk. A lot of object-oriented programming languages, including Java, were influenced by Smalltalk. 
+In his book Bruce mentioned Alan Kay, who was one of the inventors of Smalltalk. Kay summarized five basic characteristics of the language which represent an approach to object-oriented programming. 
+Please list these characteristics and explain how you understand them.
+a) Everything is an object. Everything that is written in our program is inside an object.
+b) Program is built as an interaction of objects. Objects are communicating by "sending messages". One object can “ask” other object to perform some method.
+c) Complex objects can be build out of other objects. This gives an opportunity to build advanced objects.
+d) Every object has a “type”, it means that object is an instance of some class, this determine the way we can work with object, limiting variety “messages” we can send to it.
+e) Objects of particular type can receive the same messages. It means that inherited classes can fully support all parent “messages”. Example: we have parent class Dog and inherited class Poodle and Doberman, both Poodle and Doberman are able to receive messages like “run”, “eat”, “play”
+
+2. How do you understand concept of classes and objects? What does the “Data Type” term mean? 
+Class describe what object can do and what characteristics object has. Created object as a class instance has all characteristics and abilities of the class. But actual values of characteristics can differ during object lifecycle. Example “KateLukashevych” is an instance of class “Person”. Characteristic “age” is changing during object life. Any instance of class “Person” will have “age” characteristics.
+
+3. “An object has characteristics and behaviors”, explain how you understand this expression.
+Object characteristics define current state of particular object. Behavior (functionality) is abilities of an object to perform requests.
+
+4. When someone points out that any Data Type has an interface. What is implied there?
+It means that there are defined list of requests in class that any object that is an instance of this class can perform.
+
+5. Bruce suggests the way of thinking of a program design named “service providers”. Explain how you understand it.
+> Hint: mind the “cohesion” term, it’s one of the important measurements of software quality in computer programming.
+Decompile the program into a bunch of cohesive objects. Each object is provided for its on
+
+6. What are the main reasons to hide implementation? What keywords in Java can be used to achieve the hidden implementation?
+The main reason to hide implementation is to build boundaries between developer of the class and user of the class. For the user there is no need to know how the class is implemented, developer need to be sure that his class will not be changed from outside. This gives developer possibility to change implementation without any influence on class users.  There are several access specifies that determine the way classes can interact with each other. Public provides access to any other class, private limits access only inside one class. Protected provides access to class members and to all inherited classes. There is a default access specified, provides access within one package.
+
+7. As you already know, there are two classes relationships: Inheritance (is-a relationship) and Composition (has-a relationship). Explain the difference between them, describe advantages/disadvantages of each approach.
+When class is inherited (is-a relationship) it means that all methods of parent class can we used in child class, this is not possible for composition. (this can be implemented but it is not something we receive by default).  One of advantages of inheritance is an ability to change parent and this change will be applied to all child classes. Inherited classes can be combined into one parent class array. As an example array of shapes: circles, triangles and squares. We can use shape.Draw() method to any class inherited from shape. 
+One of advantages of composition is an ability of using several different classes as members of object. This cannot be achieved when you use only inheritance, as there is no multiple inheritance in Java. Composition gives and ability to change the member objects at run time, this dynamically changes the behavior of your program.
+
+8. Bruce stated a “is-like-a” term, it’s a relationship that comes from “is-a” relationship. What is considered there? What problem do you see there?
+“is-a” relationship state that inherited class has the same methods number as parent class. “is-like-a” relationship means that inherited class has extended number of methods comparing to base class. The problem that we can face eventually that child classes will change significantly and logically it will be unclear why several child class have the same parent class.   
+
+9. Explain Polymorphism as you understand this term. Give an example. 
+It is ability to use single interface/method for objects with different type/class that were inherited from the same parent class. From the usage perspective we don’t need drill down into details how the method is implemented for each particular class, we just need to be sure that it exist and can be called. Example: we have a parent class- SocialMedia with method SocialMedia.publish(); There are inherited classes Facebook, Vkontakte, Twitter from SocialMedia class. When we want to publish any information we can use publish(). For each class publish() method will be implemented differently using external API. For the end-user of our classes there is no need to drill down into implementation, he just create object of needed class and use .publish() method. 
+
+10. How do you understand the “upcasting” and “downcasting” terms? Give an example.
+Example of upcasting:
+Void doSomething (SocialMedia socialmedia){
+socialmedia.publish()
+}
+SocialMedia facebook=new Facebook();
+SocialMedia vkontakte=new Vkontacte();
+doSomething (facebook);
+doSomething (vkontakte);
+
+When we compile the program the function doSomething expect to receive as a parameter a SocialMedia object. We pass the Facebook object to doSomething function. As Facebook is SocialMedia publish() method  from Facebook class is called.  
+Downcasting:
+Sometimes there is a need of downcasting- cast down from parent class to child class to be able to use all methods and class field of child class.
+
